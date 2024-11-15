@@ -1,76 +1,94 @@
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+// Import Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
-  // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDOQJW1ccfv3CpCQd1uaaplv26gKtv6qFk",
-    authDomain: "quantum-shilll.firebaseapp.com",
-    projectId: "quantum-shilll",
-    storageBucket: "quantum-shilll.firebasestorage.app",
-    messagingSenderId: "973795769709",
-    appId: "1:973795769709:web:01fc2aa6e50a3f94a7ee64",
-  };
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyDOQJW1ccfv3CpCQd1uaaplv26gKtv6qFk",
+  authDomain: "quantum-shilll.firebaseapp.com",
+  projectId: "quantum-shilll",
+  storageBucket: "quantum-shilll.appspot.com",
+  messagingSenderId: "973795769709",
+  appId: "1:973795769709:web:01fc2aa6e50a3f94a7ee64",
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  // Function to add a new shill thread
-  async function addShillThread(thread) {
-    try {
-      await addDoc(collection(db, "threads"), thread);
-      console.log("Thread added:", thread);
-    } catch (error) {
-      console.error("Error adding thread:", error);
-    }
+// Function to add a new shill thread
+async function addShillThread(thread) {
+  try {
+    await addDoc(collection(db, "threads"), thread);
+    console.log("Thread added to Firestore!");
+  } catch (error) {
+    console.error("Error adding thread: ", error);
   }
+}
 
-  // Render a shill thread
-  function renderThread({ coinName, ticker, reasons, shillText }) {
-    const threadContainer = document.getElementById("shillThreadContainer");
-    const threadElement = document.createElement("div");
-    threadElement.classList.add("shillThread");
-    threadElement.innerHTML = `
-      <h3 class="command">[Terminal]: Shilling ${coinName} (${ticker})</h3>
-      <p>
-        <span class="command">#Reasons to Buy:</span>
-        <span class="typing">${reasons}</span>
-      </p>
-      <p>
-        <span class="command">#Shill/Promote:</span>
-        <span class="typing">${shillText}</span>
-      </p>
-    `;
-    threadContainer.appendChild(threadElement);
-    threadContainer.scrollTop = threadContainer.scrollHeight;
-  }
-
-  // Listen for form submission
-  document.getElementById("shillForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const coinName = document.getElementById("coinName").value.trim();
-    const ticker = document.getElementById("ticker").value.trim();
-    const reasons = document.getElementById("reasons").value.trim();
-    const shillText = document.getElementById("shillText").value.trim();
-
-    if (coinName && ticker && reasons && shillText) {
-      const thread = { coinName, ticker, reasons, shillText };
-      await addShillThread(thread);
-
-      // Clear form inputs
-      document.getElementById("shillForm").reset();
-    }
-  });
-
-  // Real-time listener for new threads
-  const threadsRef = collection(db, "threads");
-  onSnapshot(threadsRef, (snapshot) => {
-    snapshot.docChanges().forEach((change) => {
-      if (change.type === "added") {
-        renderThread(change.doc.data());
-      }
+// Function to fetch all shill threads
+async function fetchThreads() {
+  try {
+    const querySnapshot = await getDocs(collection(db, "threads"));
+    const threads = [];
+    querySnapshot.forEach((doc) => {
+      threads.push(doc.data());
     });
-  });
-</script>
+    return threads;
+  } catch (error) {
+    console.error("Error fetching threads: ", error);
+    return [];
+  }
+}
+
+// Function to render a thread in the UI
+function renderThread({ coinName, ticker, reasons, shillText }) {
+  const shillThread = document.createElement("div");
+  shillThread.classList.add("shillThread");
+  shillThread.innerHTML = `
+    <h3>[Terminal]: Shilling ${coinName} (${ticker})</h3>
+    <p><strong>#Reasons to Buy:</strong> ${reasons}</p>
+    <p><strong>#Shill/Promote:</strong> ${shillText}</p>
+  `;
+  document.getElementById("shillThreadContainer").appendChild(shillThread);
+}
+
+// Handle form submission
+document.getElementById("shillForm").addEventListener("submit", async (event) => {
+  event.preventDefault(); // Prevent default form submission behavior
+
+  // Get form inputs
+  const coinName = document.getElementById("coinName").value.trim();
+  const ticker = document.getElementById("ticker").value.trim();
+  const reasons = document.getElementById("reasons").value.trim();
+  const shillText = document.getElementById("shillText").value.trim();
+
+  // Validate inputs
+  if (!coinName || !ticker || !reasons || !shillText) {
+    alert("Please fill in all fields!");
+    return;
+  }
+
+  // Create thread object
+  const thread = { coinName, ticker, reasons, shillText };
+
+  // Add thread to Firestore
+  await addShillThread(thread);
+
+  // Render thread in the UI
+  renderThread(thread);
+
+  // Clear the form
+  document.getElementById("shillForm").reset();
+});
+
+// Fetch and render threads on page load
+window.onload = async () => {
+  const threads = await fetchThreads();
+  threads.forEach(renderThread);
+};
