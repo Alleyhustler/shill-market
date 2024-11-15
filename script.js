@@ -4,13 +4,13 @@ import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "fi
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDOQJW1ccfv3CpCQd1uaaplv26gKtv6qFk",
-    authDomain: "quantum-shilll.firebaseapp.com",
-    projectId: "quantum-shilll",
-    storageBucket: "quantum-shilll.firebasestorage.app",
-    messagingSenderId: "973795769709",
-    appId: "1:973795769709:web:01fc2aa6e50a3f94a7ee64",
-  };
+  apiKey: "your-api-key",
+  authDomain: "your-auth-domain",
+  projectId: "your-project-id",
+  storageBucket: "your-storage-bucket",
+  messagingSenderId: "your-messaging-sender-id",
+  appId: "your-app-id"
+};
 
 // Initialize Firebase and Firestore
 const app = initializeApp(firebaseConfig);
@@ -37,8 +37,8 @@ document.getElementById("shillForm").addEventListener("submit", async function (
       timestamp: Date.now()
     });
 
-    // Clear the form after submission
-    document.getElementById("shillForm").reset();
+    console.log("Shill thread added successfully!"); // Debugging
+    document.getElementById("shillForm").reset(); // Clear form
   } catch (error) {
     console.error("Error adding thread:", error);
   }
