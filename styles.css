@@ -200,3 +200,20 @@ p {
 }
 
 
+/* Social Media Links Styling */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-icon a {
+    color: #00FF00;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.social-icon a:hover {
+    text-decoration: underline;
+}

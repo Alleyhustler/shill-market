@@ -1,62 +1,76 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+document.getElementById('shillForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    const coinName = document.getElementById('coinName').value;
+    const ticker = document.getElementById('ticker').value;
+    const reasons = document.getElementById('reasons').value;
+    const shillText = document.getElementById('shillText').value;
 
-// Paste your Firebase config here
-const firebaseConfig = {
-    apiKey: "AIzaSyDY6LILW5s8pNdYqAJAGfWjyxN9vBfCpXs",
-    authDomain: "quantums-1af9f.firebaseapp.com",
-    databaseURL: "https://quantums-1af9f-default-rtdb.firebaseio.com",
-    projectId: "quantums-1af9f",
-    storageBucket: "quantums-1af9f.firebasestorage.app",
-    messagingSenderId: "549853764835",
-    appId: "1:549853764835:web:2cac5adc467d27a2b1f9d6"
-  };
-
-// Initialize Firebase and Firestore
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const threadsCollection = collection(db, "shillThreads");
-
-// Handle form submission
-document.getElementById("shillForm").addEventListener("submit", async function (event) {
-  event.preventDefault();
-
-  const coinName = document.getElementById("coinName").value;
-  const ticker = document.getElementById("ticker").value;
-  const reasons = document.getElementById("reasons").value;
-  const shillText = document.getElementById("shillText").value;
-
-  try {
-    await addDoc(threadsCollection, {
-      coinName,
-      ticker,
-      reasons,
-      shillText,
-      timestamp: Date.now()
-    });
-
-    document.getElementById("shillForm").reset();
-  } catch (error) {
-    console.error("Error adding thread:", error);
-  }
-});
-
-// Display threads in real-time
-const queryThreads = query(threadsCollection, orderBy("timestamp", "desc"));
-onSnapshot(queryThreads, (snapshot) => {
-  const container = document.getElementById("shillThreadContainer");
-  container.innerHTML = "";
-
-  snapshot.forEach((doc) => {
-    const data = doc.data();
-
-    const shillThread = document.createElement("div");
-    shillThread.classList.add("shillThread");
+    
+  
+    // Create the Shill Thread Div
+    const shillThread = document.createElement('div');
+    shillThread.classList.add('shillThread');
+    
+    // Construct the thread content
+    // Construct the thread content
     shillThread.innerHTML = `
-      <h3>${data.coinName} (${data.ticker})</h3>
-      <p>Reasons: ${data.reasons}</p>
-      <p>Promotion: ${data.shillText}</p>
+    <h3 class="command">[Terminal]: Shilling ${coinName} (${ticker})</h3>
+    <p>
+        <span class="command">#Reasons to Buy:</span>
+        <span class="typing">${reasons}</span>
+    </p>
+    <p>
+        <span class="command">#Shill/Promote:</span>
+        <span class="typing">${shillText}</span>
+    </p>
     `;
-    container.appendChild(shillThread);
+
+
+  
+    // Append the new thread to the container
+    document.getElementById('shillThreadContainer').appendChild(shillThread);
+    
+    // Clear form inputs
+    document.getElementById('shillForm').reset();
   });
-});
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fake thread data
+    const fakeThreads = [
+      {
+        coinName: "asd",
+        ticker: "sds",
+        reasons: "sd.",
+        shillText: "jnd!",
+      },
+      {
+        coinName: "test",
+        ticker: "test",
+        reasons: "test",
+        shillText: "test",
+      },
+      {
+        coinName: "niggaaaaaa",
+        ticker: "nigger",
+        reasons: "wtf is this real chat.",
+        shillText: "shillinh",
+      },
+
+    ];
+  
+    // Get the container where threads will be displayed
+    const container = document.getElementById("shillThreadContainer");
+  
+    // Loop through each fake thread and add it to the DOM
+    fakeThreads.forEach(thread => {
+      const shillThread = document.createElement("div");
+      shillThread.classList.add("shillThread");
+      shillThread.innerHTML = `
+        <h3>${thread.coinName} (${thread.ticker})</h3>
+        <p><strong>#Reasons to Buy:</strong> ${thread.reasons}</p>
+        <p><strong>#Shill/Promote:</strong> ${thread.shillText}</p>
+      `;
+      container.appendChild(shillThread);
+    });
+  });
