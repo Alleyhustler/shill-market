@@ -1,0 +1,202 @@
+/* Body and Basic Styling */
+body {
+    background-color: #1c1c1c;
+    color: #00FF00;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #00FF00;
+    text-shadow: 0 0 10px #00FF00;
+  }
+  
+  .prompt {
+    font-size: 18px;
+    color: #66FF66;
+    text-shadow: 0 0 5px #66FF66;
+  }
+  
+  /* Form Styling */
+  form {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    margin-top: 20px;
+    display: block;
+  }
+  
+  .command {
+    color: #00FF00;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    background-color: #00FF00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .submit-button:hover {
+    background-color: #66FF66;
+    transition: background-color 0.2s ease;
+  }
+  
+/* Shill Thread Styling - More compact version */
+/* Shill Thread Styling - More horizontal */
+.shillThread {
+    margin: 5px 0; /* Reduced margin */
+    padding: 8px; /* Reduced padding */
+    background-color: #222; /* Keep the same background */
+    border-radius: 5px; /* Keep rounded corners */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Lighter shadow */
+    color: #00FF00;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap; /* Prevent wrapping to create longer, horizontal content */
+    font-size: 12px; /* Smaller font size for better horizontal fit */
+    line-height: 1.4; /* Keep line height at a comfortable value */
+    max-width: 100%; /* Make the thread take up full container width */
+    word-wrap: normal; /* Allow text to overflow horizontally */
+    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
+}
+
+/* Header (Coin Name + Ticker) */
+.shillThread h3 {
+    font-size: 14px; /* Adjusted header font size */
+    font-weight: bold;
+    margin-bottom: 3px; /* Reduced margin */
+    color: #00FF00;
+    text-shadow: 0 0 3px #00FF00; /* Subtle shadow */
+}
+
+/* Paragraph for Reasons to Buy / Shill Text */
+.shillThread p {
+    margin: 3px 0; /* Reduced margin */
+    font-size: 12px; /* Adjusted font size */
+}
+
+/* Command-like Text */
+.shillThread .command {
+    color: #acffd0;
+    font-style: italic;
+    margin-top: 5px; /* Reduced margin */
+}
+
+/* Typing Effect */
+.shillThread .typing {
+    display: inline-block;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(40) 1s forwards, blink 0.75s step-end infinite;
+    border-right: 2px solid #00FF00; /* Thinner cursor effect */
+}
+
+/* Container adjustments */
+.thread-container {
+    font-size: 10px; /* Adjust font size for container */
+    line-height: 1.2; /* Tightened line height */
+    max-width: 100%; /* Ensure responsiveness */
+    padding: 10px;
+    word-wrap: normal; /* Avoid wrapping in container */
+    overflow-x: auto; /* Allow horizontal scroll if content overflows */
+}
+
+
+
+/* Animation for typing */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* Ensure inline alignment with flex */
+p {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align elements vertically in the center */
+    margin: 3px 0; /* Compact spacing */
+    font-size: 12px; /* Maintain consistent size */
+    line-height: 1.5;
+}
+
+/* Typing effect stays inline */
+.typing {
+    display: inline-block; /* Keep inline layout */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide content during animation */
+    animation: typing 2s steps(40) 1s forwards, blink 0.75s step-end infinite;
+    border-right: 2px solid #00FF00; /* Typing cursor effect */
+    width: 0; /* Start with zero width */
+    line-height: normal; /* Reset line height */
+    vertical-align: middle; /* Align with the middle of the line */
+    position: relative;
+    top: -2px; /* Fine-tune alignment further upwards */
+}
+
+/* Inline styling for command */
+.command {
+    margin-right: 5px; /* Add space between label and typing animation */
+    white-space: nowrap; /* Prevent wrapping */
+    display: inline-block; /* Ensure inline layout */
+    vertical-align: middle; /* Align vertically with typing */
+    line-height: normal; /* Reset line height */
+}
+
+
+/* Keyframe animations */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
