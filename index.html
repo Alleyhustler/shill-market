@@ -3,12 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shill</title>
+  <title>Shill Market - Generate Meme Coin Promotions</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles to improve clarity and user experience */
+    .intro-section {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(255 255 255 / 30%);
+      margin: 20px 0;
+    }
+    
+    .step-guide {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    
+    .step {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(255 255 255 / 30%);
+      width: 30%;
+      min-width: 200px;
+      margin-bottom: 15px;
+    }
+    
+    .step h3 {
+      color: #6b6b6b;
+      margin-top: 0;
+    }
+    
+    .form-instructions {
+      margin-bottom: 10px;
+      font-style: italic;
+      color: #ffffff;
+    }
+    
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #d7d7d7;
+      font-weight: bold;
+    }
+    
+    .section-heading {
+      border-bottom: 1px solid #4f4f4f;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    
+    .example-thread {
+      border: 1px dashed #595959;
+      margin-bottom: 20px;
+    }
+    
+    .clear-button {
+      background-color: #444;
+      color: #c5c5c5;
+      border: 1px solid #606060;
+      margin-right: 10px;
+    }
+    
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    
+    /* Improving form layout */
+    form {
+      display: block;
+    }
+    
+    .field-group {
+      margin-bottom: 15px;
+    }
+    
+    /* ASCII Art styling */
+    .ascii-logo {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    #ascii-art-display {
+    font-family: monospace;
+    font-size: 0.7em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgb(255 255 255 / 70%);
+    background-color: #1c1c1c;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #434343;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0 auto 20px auto;
+    white-space: pre;
+    }
+    
+    .ascii-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #222;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 7px rgba(146, 148, 146, 0.3);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
+    <div class="ascii-logo">
+      <pre id="ascii-art-display">
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████▒░░░░░░░░░░░░░░░░░██▒░░░░░░░░░░░░░░░░░▓█▓░░░░░░░░░░░░░░░░▓██░░░░░░░░░░░░░░░░░▓████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████▒░░░   ░ ░       ░██▒░░          ░░  ░██▒░   ░     ░   ░░▓██░  ░     ░ ░░  ░░▓████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████▓░░░   ░ ░       ▒██▓            ░░  ░██▓░░  ░     ░   ░░███░░ ░     ░ ░░  ░░█████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████░ ░             ▓███░░          ░░░░▒██▓░░      ░░░░  ░░███░░ ░       ░░  ░▒█████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████░░░   ░ ░     ░░████░░            ░░████░░  ░   ▒█▓░░░░░███▒░ ░     ░     ░▓█████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████▓░░   ░ ░     ░▓████▓ ░           ░▒████▒░░░░ ░░████▓░░░████░ ░     ░ ░░░░░██████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████░░ ░ ░ ░   ░ ▒██████░░         ░░░██████░░░░░░▒██████▓▒████▒░░     ░ ░░░░███████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒███████░░░ ░ ░ ░░░▒████████░░      ░░░▒███████▓░░░░░██████████████▒░░    ░ ░░░████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████████▓░░░░░ ░░▓██████████▒░░░░░░░░▓██████████░░░▓███████████████▓░░ ░░░░░▓█████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒███████████▓▓▓▓████████████████▓▓▓▓██████████████▓▒███████████████████▓▓▓▓████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████▓▓▓▓▓██████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒███████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒███████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████▓▓▓▓██████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████████▓████████▓▓▓▓▓▓▓▓▓▓▓██████████▓▓▓▓▓▓▓▓▓▓██████████▓▓▓▓▓▓▓▓███████████████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████████████████████▓▓▓▓▓▓█████▓▓▓██████▓▓▓▓▓▓██████▓▓██████▓▓▓▓▓██████▓▓▓███████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████▒░░░  ░░▒████▓▓████▓░░░░░░░▒████▓▓▓▓███▓░░░░░░░▒████▓▓█████▓░░░░░░░▒████████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████████░░░░ ░   ░ ░▓███████░░░      ░░▓███▓████░░░░░  ░ ░░▒████████░░░  ░ ░░░░▒██████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒███████░░░ ░ ░     ░░▓████▓░░░       ░░░▓██████░░░     ░ ░░░▒██████░░    ░ ░░ ░░▒█████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████░░   ░ ░       ░████░░           ░░█████░░░░     ░   ░░█████▒░     ░     ░░█████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████▒░░   ░ ░       ░▓██▒░          ░░░░▓███▓░░░░     ░   ░░▒███▓░░     ░ ░░  ░░▒████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒█████░░░   ░ ░     ░ ░░██░░          ░░  ▒███░░  ░     ░   ░░░███▒░░     ░ ░░    ░████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████▓░ ░   ░ ░     ░ ░░█▓░░          ░░  ░███░░  ░     ░     ░███░░░     ░ ░░  ░░░████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████▒░░░   ░ ░     ░ ░░█▒░░          ░░  ░██▓░   ░     ░      ▓██░ ░     ░ ░░    ░████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒████░░░░░░░░ ░     ░ ░░█▒░░    ░░    ░░░░░██▒░░░░░     ░   ░░░▓█▓░░░     ░ ░░    ░████▒▒▒▒▒▒▒
+        ▒▒▒▒▒▒▒██████████████████████████████████████████████████████████████████████████████████████▒▒▒▒▒▒▒
+      </pre>
+    </div>
+    
     <h1>Shill Market</h1>
+    <p class="prompt">Generate promotional content for your favorite meme coins in terminal style</p>
+    
     <div class="social-media">
       <div class="social-icon">
         <a href="https://x.com/Universal_shill" target="_blank">Twitter</a>
@@ -23,32 +182,139 @@
         <a href="https://pump.fun/profile/4bPmZAovCPdMQijteGinFz4DfiBRC6Vx1D7GiS1THpMe" target="_blank">$USHILL</a>
       </div>
     </div>
-    <p>Enter your Memecoin details to shill it!</p>
+    
+    <div class="intro-section">
+      <h2>What is Shill Market?</h2>
+      <p>Shill Market is a creative tool for crypto enthusiasts to generate eye-catching promotional content for meme coins. Create terminal-style "shill threads" that highlight your coin's potential in a unique hacker aesthetic.</p>
+      <p>Use this tool to craft compelling promotions, then share them on your favorite crypto platforms to gain visibility for your favorite meme coins!</p>
+    </div>
+    
+    <div class="step-guide">
+      <div class="step">
+        <h3>Step 1</h3>
+        <p>Enter your meme coin's name and ticker symbol</p>
+      </div>
+      <div class="step">
+        <h3>Step 2</h3>
+        <p>Add key reasons why people should buy this coin</p>
+      </div>
+      <div class="step">
+        <h3>Step 3</h3>
+        <p>Create promotional text to generate buzz around your coin</p>
+      </div>
+    </div>
+    
+    <h2 class="section-heading">Create Your Shill Thread</h2>
+    <p class="form-instructions">Fill out the form below to generate your unique meme coin promotion in hacker terminal style!</p>
     
     <form id="shillForm">
-      <label for="coinName">Memecoin Name:</label>
-      <input type="text" id="coinName" required>
+      <div class="field-group">
+        <label for="coinName">Memecoin Name:</label>
+        <input type="text" id="coinName" class="input-field" placeholder="Enter coin name (e.g., DogeMoon)" required>
+      </div>
       
-      <label for="ticker">Ticker:</label>
-      <input type="text" id="ticker" required>
+      <div class="field-group">
+        <label for="ticker">Ticker Symbol:</label>
+        <input type="text" id="ticker" class="input-field" placeholder="Enter ticker (e.g., $DGMN)" required>
+      </div>
       
-      <label for="reasons">Reasons to Buy:</label>
-      <textarea id="reasons" required></textarea>
+      <div class="field-group">
+        <label for="reasons">Reasons to Buy:</label>
+        <textarea id="reasons" class="input-field" placeholder="List key selling points (e.g., Strong community, Low market cap, Experienced dev team)" rows="3" required></textarea>
+      </div>
       
-      <label for="shillText">Shill/Promote:</label>
-      <textarea id="shillText" required></textarea>
+      <div class="field-group">
+        <label for="shillText">Promotional Content:</label>
+        <textarea id="shillText" class="input-field" placeholder="Write a compelling message to promote your coin (e.g., Next 100x gem! Don't miss out on this rocket to the moon!)" rows="4" required></textarea>
+      </div>
       
-      <button type="submit">Shill It!</button>
+      <div class="button-group">
+        <button type="reset" class="clear-button">Clear Form</button>
+        <button type="submit" class="submit-button">Generate Shill Thread</button>
+      </div>
     </form>
+    
+    <h2 class="section-heading">Your Generated Shill Threads</h2>
+    <p>Your promotional threads will appear below. Screenshot and share them on social media!</p>
     
     <div id="shillThreadContainer">
       <!-- Generated shill threads will appear here -->
     </div>
   </div>
   
-  <script src="script.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
+  <script>
+  document.getElementById('shillForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    const coinName = document.getElementById('coinName').value;
+    const ticker = document.getElementById('ticker').value;
+    const reasons = document.getElementById('reasons').value;
+    const shillText = document.getElementById('shillText').value;
+    
+    // Create the Shill Thread Div
+    const shillThread = document.createElement('div');
+    shillThread.classList.add('shillThread');
+    
+    // Construct the thread content
+    shillThread.innerHTML = `
+    <h3 class="command">[Terminal]: Shilling ${coinName} (${ticker})</h3>
+    <p>
+        <span class="command">#Reasons to Buy:</span>
+        <span class="typing">${reasons}</span>
+    </p>
+    <p>
+        <span class="command">#Shill/Promote:</span>
+        <span class="typing">${shillText}</span>
+    </p>
+    `;
+  
+    // Append the new thread to the container
+    document.getElementById('shillThreadContainer').appendChild(shillThread);
+    
+    // Clear form inputs
+    document.getElementById('shillForm').reset();
+  });
 
+  // Show example threads on page load
+  document.addEventListener('DOMContentLoaded', function () {
+    // Example thread data
+    const exampleThreads = [
+      {
+        coinName: "MoonDoge",
+        ticker: "$MDOGE",
+        reasons: "Low market cap, strong community, active devs working on utility features.",
+        shillText: "Just discovered the next 100x gem! $MDOGE is ready to explode! Join the community now before we take off!",
+      },
+      {
+        coinName: "RocketToken",
+        ticker: "$RCKT",
+        reasons: "Deflationary tokenomics, locked liquidity, clear roadmap for 2025.",
+        shillText: "Don't miss $RCKT's imminent takeoff! Strong fundamentals and growing fast. This is financial freedom waiting to happen!",
+      }
+    ];
+  
+    // Get the container where threads will be displayed
+    const container = document.getElementById("shillThreadContainer");
+  
+    // Loop through each example thread and add it to the DOM
+    exampleThreads.forEach(thread => {
+      const shillThread = document.createElement("div");
+      shillThread.classList.add("shillThread");
+      shillThread.classList.add("example-thread");
+      shillThread.innerHTML = `
+        <h3 class="command">[Terminal]: Shilling ${thread.coinName} (${thread.ticker})</h3>
+        <p>
+            <span class="command">#Reasons to Buy:</span>
+            <span class="typing">${thread.reasons}</span>
+        </p>
+        <p>
+            <span class="command">#Shill/Promote:</span>
+            <span class="typing">${thread.shillText}</span>
+        </p>
+      `;
+      container.appendChild(shillThread);
+    });
+  });
+  </script>
 </body>
 </html>

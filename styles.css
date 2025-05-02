@@ -1,7 +1,7 @@
 /* Body and Basic Styling */
 body {
     background-color: #1c1c1c;
-    color: #00FF00;
+    color: #ffffff;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
@@ -15,14 +15,14 @@ body {
   
   h1 {
     text-align: center;
-    color: #00FF00;
-    text-shadow: 0 0 10px #00FF00;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
   }
   
   .prompt {
     font-size: 18px;
-    color: #66FF66;
-    text-shadow: 0 0 5px #66FF66;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
   }
   
   /* Form Styling */
@@ -30,13 +30,14 @@ body {
     background-color: #222;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 10px rgb(255 255 255 / 30%);
     margin-top: 20px;
     display: block;
   }
   
   .command {
-    color: #00FF00;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -45,8 +46,9 @@ body {
     width: 100%;
     padding: 10px;
     background-color: #333;
-    color: #00FF00;
-    border: 1px solid #00FF00;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
+    border: 1px solid #3c3c3c;
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px;
@@ -55,7 +57,7 @@ body {
   }
   
   .submit-button {
-    background-color: #00FF00;
+    background-color: #797979;
     color: black;
     border: none;
     border-radius: 5px;
@@ -67,7 +69,7 @@ body {
   }
   
   .submit-button:hover {
-    background-color: #66FF66;
+    background-color: #ffffff;
     transition: background-color 0.2s ease;
   }
   
@@ -78,8 +80,8 @@ body {
     padding: 8px; /* Reduced padding */
     background-color: #222; /* Keep the same background */
     border-radius: 5px; /* Keep rounded corners */
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Lighter shadow */
-    color: #00FF00;
+    box-shadow: 0 0 5px rgba(56, 56, 56, 0.3); /* Lighter shadow */
+    color: #ffffff;
     font-family: 'Courier New', Courier, monospace;
     white-space: nowrap; /* Prevent wrapping to create longer, horizontal content */
     font-size: 12px; /* Smaller font size for better horizontal fit */
@@ -94,8 +96,8 @@ body {
     font-size: 14px; /* Adjusted header font size */
     font-weight: bold;
     margin-bottom: 3px; /* Reduced margin */
-    color: #00FF00;
-    text-shadow: 0 0 3px #00FF00; /* Subtle shadow */
+    color: #ffffff;
+    text-shadow: 0 0 3px #000000; /* Subtle shadow */
 }
 
 /* Paragraph for Reasons to Buy / Shill Text */
@@ -106,7 +108,7 @@ body {
 
 /* Command-like Text */
 .shillThread .command {
-    color: #acffd0;
+    color: #ee1010;
     font-style: italic;
     margin-top: 5px; /* Reduced margin */
 }
@@ -118,7 +120,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     animation: typing 2s steps(40) 1s forwards, blink 0.75s step-end infinite;
-    border-right: 2px solid #00FF00; /* Thinner cursor effect */
+    border-right: 2px solid #515151; /* Thinner cursor effect */
 }
 
 /* Container adjustments */
@@ -165,7 +167,7 @@ p {
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide content during animation */
     animation: typing 2s steps(40) 1s forwards, blink 0.75s step-end infinite;
-    border-right: 2px solid #00FF00; /* Typing cursor effect */
+    border-right: 2px solid #474747; /* Typing cursor effect */
     width: 0; /* Start with zero width */
     line-height: normal; /* Reset line height */
     vertical-align: middle; /* Align with the middle of the line */
@@ -209,7 +211,7 @@ p {
 }
 
 .social-icon a {
-    color: #00FF00;
+    color: #ee1010;
     text-decoration: none;
     font-size: 16px;
 }
